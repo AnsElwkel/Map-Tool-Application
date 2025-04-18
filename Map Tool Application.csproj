@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <RootNamespace>Map_Tool_Application</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="src\TestDrivers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Map Creation Tool.csproj" />
+    <None Include="Map Creation Tool.csproj.user" />
+    <None Include="Map Creation Tool.sln" />
+    <None Include="Map Creation Tool.sln.DotSettings.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+  </ItemGroup>
+
+</Project>
