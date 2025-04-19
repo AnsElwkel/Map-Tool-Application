@@ -162,7 +162,7 @@ namespace Map_Creation_Tool.src.View
                 Cursor = Cursors.Cross
             };
 
-            pictureBox.MouseDown += PictureBox_MouseDown;
+            pictureBox.MouseDown += PictureBox_MouseDown; 
             pictureBox.MouseMove += PictureBox_MouseMove;
             pictureBox.MouseUp += PictureBox_MouseUp;
             pictureBox.Paint += PictureBox_Paint;
@@ -437,20 +437,20 @@ namespace Map_Creation_Tool.src.View
 
             if (targetColor.ToArgb() == replaceColor.ToArgb()) return;
 
-            var stack = new Stack<Point>();
-            stack.Push(point);
+            var queue = new Queue<Point>();
+            queue.Enqueue(point);
 
-            while (stack.Count > 0)
+            while (queue.Count > 0)
             {
-                Point p = stack.Pop();
+                Point p = queue.Dequeue();
                 if (!IsInCanvas(p) || canvas.GetPixel(p.X, p.Y) != targetColor)
                     continue;
 
                 canvas.SetPixel(p.X, p.Y, replaceColor);
-                stack.Push(new Point(p.X - 1, p.Y));
-                stack.Push(new Point(p.X + 1, p.Y));
-                stack.Push(new Point(p.X, p.Y - 1));
-                stack.Push(new Point(p.X, p.Y + 1));
+                queue.Enqueue(new Point(p.X - 1, p.Y));
+                queue.Enqueue(new Point(p.X + 1, p.Y));
+                queue.Enqueue(new Point(p.X, p.Y - 1));
+                queue.Enqueue(new Point(p.X, p.Y + 1));
             }
             pictureBox.Invalidate();
         }
@@ -690,7 +690,7 @@ namespace Map_Creation_Tool.src.View
             dlg.Title = "Save Labels Map";
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            canvas.Save(dlg.FileName + ".png", ImageFormat.Png);
+            //canvas.Save(dlg.FileName + ".png", ImageFormat.Png);
 
             // Save labels in a parallel .txt file
             using (var sw = new StreamWriter(dlg.FileName + ".txt"))
