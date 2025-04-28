@@ -73,7 +73,7 @@ namespace Map_Creation_Tool.src.View
 
         }
         private void FindandDrawPath()
-        {
+        {   
             using (PathTypeDialog dialog = new PathTypeDialog())
             {
                 // Center the dialog on the screen
@@ -96,7 +96,7 @@ namespace Map_Creation_Tool.src.View
 
                 List<(int x, int y)> path = pathFinderController.pathfinder();
 
-                if (path.Count > 0)
+                if (path != null && path.Count > 0)
                 {
                     PathPrinter pathPrinter = new PathPrinter(path);
                     pathPrinter.printPath();
@@ -157,7 +157,7 @@ namespace Map_Creation_Tool.src.View
         private void roundedButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
+        } 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -394,6 +394,12 @@ namespace Map_Creation_Tool.src.View
             pictureBox1.Image = updatedImage;
             pictureBox1.Refresh();
         }
+        ~ShortestPathForm()
+        {
+            Database.Instance.LabelsContent = "";
+        }
+
+
 
     }
 }

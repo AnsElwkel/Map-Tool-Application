@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Eventing.Reader;
 using Map_Creation_Tool.src.Controller;
 namespace Map_Creation_Tool.src.Model
@@ -22,8 +23,8 @@ namespace Map_Creation_Tool.src.Model
         private List<(int x, int y)> path;
 
         //Directions of path finding
-        public static readonly int[] dx = { 0, 1, 0, -1, 1, 1, -1, -1 };
-        public static readonly int[] dy = { 1, 0, -1, 0, 1, -1, 1, -1 };
+        public static readonly int[] dx = { 0, 1, 0, -1/* 1, 1, -1, -1 */};
+        public static readonly int[] dy = { 1, 0, -1, 0 /*1, -1, 1, -1 */};
 
         public static (int R, int G, int B) PLACE_COLOR = (238, 232, 232);
         public static (int R, int G, int B) REGULAR_PATH_COLOR = (189, 198, 197);
@@ -112,12 +113,16 @@ namespace Map_Creation_Tool.src.Model
             }
 
             Node curNode = default;
+            bool done = false;
             while (pq.Count > 0)
             {
                 curNode = pq.Dequeue();
 
                 if (toPoints.Contains((curNode.Position.x, curNode.Position.y)))
+                {
+                    done = true;
                     break;
+                }
 
                 if (visited[curNode.Position.x, curNode.Position.y])
                     continue;
@@ -148,7 +153,10 @@ namespace Map_Creation_Tool.src.Model
                 }
             }
 
-            return buildPath(ref parent, (curNode.Position.x, curNode.Position.y));
+            List<(int x , int y)> path = new List<(int x , int y)>();
+            if(done)
+                path = buildPath(ref parent, (curNode.Position.x, curNode.Position.y));
+            return path;
         }
 
         public List<(int x, int y)> buildPath(ref Dictionary<(int x, int y), (int x, int y)> parent, (int x, int y) to)

@@ -32,12 +32,12 @@ namespace Map_Creation_Tool.src.Model
                     // Check if the pixel color is one of the predefined colors
                     if (pixelColor == Color.FromArgb(255, PathFinder.VERY_BUSY_PATH_COLOR.R, PathFinder.VERY_BUSY_PATH_COLOR.G, PathFinder.VERY_BUSY_PATH_COLOR.B))
                     {
-                        weight = 128;
+                        weight = 16;
                         type = CellType.Walkable;
                     }
                     else if (pixelColor == Color.FromArgb(255, PathFinder.BUSY_PATH_COLOR.R, PathFinder.BUSY_PATH_COLOR.G, PathFinder.BUSY_PATH_COLOR.B))
                     {
-                        weight = 64;
+                        weight = 8;
                         type = CellType.Walkable;
                     }
                     else if (pixelColor == Color.FromArgb(255, PathFinder.REGULAR_PATH_COLOR.R, PathFinder.REGULAR_PATH_COLOR.G, PathFinder.REGULAR_PATH_COLOR.B))
