@@ -10,20 +10,27 @@ The **Map Creation Application** is a C# WinForms project designed to let users 
 
 - **Custom Map Drawer:**  
   Draw and label streets and places directly within the application.
+  
 - **Import Maps:**  
   Optionally, design your map in Photoshop and import it into the application.
+  
 - **Pathfinding Algorithms:**  
   - Find the shortest or fastest path between two points using the efficient A* algorithm.
   - Map graph structure supports robust pathfinding.
+    
 - **Map Editing Tools:**  
   - Draw lines, rectangles, and snap to grid for precise map creation.
   - Undo and redo capabilities for flexible editing.
+    
 - **MVC Architecture:**  
   Clean separation of concerns using the Model-View-Controller design pattern.
+  
 - **Singleton Pattern:**  
   Ensures a single instance of key classes.
+  
 - **SOLID Principles:**  
   Applied to improve maintainability and extensibility.
+  
 - **Simulated Database:**  
   A database class is used to mimic persistent storage.
 
@@ -33,9 +40,11 @@ The **Map Creation Application** is a C# WinForms project designed to let users 
 
 - **Language & Framework:**  
   C# with Windows Forms (WinForms) for the GUI.
+  
 - **Design Patterns:**  
   - **MVC:** For separation of UI, business logic, and data.
   - **Singleton:** To ensure single instances where necessary.
+    
 - **Algorithms Used:**  
   - **Flood Fill (BFS):** For filling areas in the map drawer.
   - **A* Algorithm:** For efficient pathfinding.
@@ -68,9 +77,11 @@ The **Map Creation Application** is a C# WinForms project designed to let users 
    - Use the integrated map drawer to design your map.
    - Label streets and places as needed.
    - Or import a map image (see user guide for details).
+     
 2. **Edit Map:**
    - Use draw tools (line, rectangle, snap to grid).
    - Use Undo/Redo to modify your map easily.
+     
 3. **Pathfinding:**
    - Load your map.
    - Select two walkable points.
